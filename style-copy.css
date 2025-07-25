@@ -82,8 +82,6 @@ main {
 
 .main__container {
     width: 100%;
-    container-type: inline-size; /* Делаем его контейнером по ширине */
-    container-name: main-container; /* Присваиваем имя */
     background-color: var(--clr-background-body);
 }
 
@@ -261,18 +259,18 @@ main {
 
 .header {
     position: relative;
-    /*background-color: var(--clr-background-header);*/
+    background-color: var(--clr-background-header);
 }
 
 .header::before {
     content: '';
     position: absolute;
     background: var(--clr-background-header);
-    /*left: -32px;*/
-    /*right: -32px;*/
+    left: -32px;
+    right: -32px;
     top: 0;
     bottom: 0;
-    height: 100%;
+    z-index: -1;
 }
 
 .header__container{
@@ -412,16 +410,7 @@ main {
     .left-menu::before{
         content: unset;
     }
-}
 
-@media (min-width: 768px) and (max-width: 1120px) {
-    .left-menu{
-    }
-}
-
-@media (max-width: 768px) {}
-
-@container main-container (min-width: 1120px) {
     .first-section{
         display: grid;
         grid-template-columns: repeat(2, auto);
@@ -436,7 +425,7 @@ main {
     }
 
     .header::before {
-        content: unset;
+        background-color: transparent;
     }
 
     .header__container{
@@ -493,20 +482,15 @@ main {
     }
 
     .services__content {
-        grid-column: span 2 / span 2;
-        grid-row-start: 3;
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
     }
 
     .services__text{
-
+        grid-row-start: 3;
     }
 
     .services__image{
-
+        grid-row-start: 3;
     }
 
     .services__text p {
@@ -514,7 +498,11 @@ main {
     }
 }
 
-@container main-container (min-width: 768px) and (max-width: 1120px) {
+@media (min-width: 768px) and (max-width: 1120px) {
+    .left-menu{
+
+        /*left: -320px;*/
+    }
 
     .first-section {
         display: flex;
@@ -534,6 +522,7 @@ main {
     .header__items{
         display: flex;
     }
+
 
     .header__logo {
         position: relative;
@@ -566,7 +555,8 @@ main {
     }
 }
 
-@container main-container (max-width: 768px){
+@media (max-width: 768px) {
+
     .first-section {
         display: flex;
         flex-direction: column;
@@ -624,5 +614,9 @@ main {
     .services__text p {
         -webkit-line-clamp: 4;
     }
+
+}
+
+@container main-container (min-width: 1120px) {
 
 }
