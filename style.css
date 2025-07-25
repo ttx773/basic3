@@ -45,6 +45,10 @@ p,h1,h2,h3,h4,h5,h6 {
     letter-spacing: 0.2px;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 li {
     list-style: none;
@@ -62,6 +66,11 @@ button{
     background: none;
 }
 
+
+main {
+    display: flex;
+}
+
 @keyframes line {
     from {
         width: 0;
@@ -70,6 +79,12 @@ button{
         width: 100%;
     }
 }
+
+.main__container {
+    width: 100%;
+    background-color: var(--clr-background-body);
+}
+
 
 /*MENU ASIDE*/
 
@@ -85,17 +100,26 @@ button{
 
 .left-menu{
     display: flex;
-    /*position:fixed;*/
-    /*top: 0;*/
-    /*left: -320px;*/
     flex-direction: column;
-    background-color: var(--clr-background-body);
+    position: fixed;
+    top: 0;
+    left: 0;
     gap: 46px;
     max-width: 320px;
     width: 100%;
     height: 100vh;
+    background-color: var(--clr-background-header);
     box-shadow: 16px 0 52px 0 #0E185033;
     z-index: 10;
+}
+
+.left-menu::before{
+    content: '';
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
 }
 
 .left-menu__container{
@@ -230,7 +254,6 @@ button{
 /*SECTION FIRST*/
 
 .first-section {
-    /*max-width: 1120px;*/
     margin: 0 auto;
 }
 
@@ -379,6 +402,15 @@ button{
 }
 
 @media (min-width: 1120px) {
+    .left-menu{
+        position:unset;
+        box-shadow: unset;
+    }
+
+    .left-menu::before{
+        content: unset;
+    }
+
     .first-section{
         display: grid;
         grid-template-columns: repeat(2, auto);
@@ -469,6 +501,11 @@ button{
 }
 
 @media (min-width: 768px) and (max-width: 1120px) {
+    .left-menu{
+
+        /*left: -320px;*/
+    }
+
     .first-section {
         display: flex;
         padding: 0 24px;
